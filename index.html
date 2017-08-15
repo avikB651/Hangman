@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/p1.css">
+  <title>Hangman</title>
+</head>
+
+<body>
+  <div id="container">
+    <h1>Hangman</h1>
+    <div id="singlePlayer" class="game-type">
+      <p>Enter the movie name you want people to guess</p>
+      <input type="text" id="moviename">
+      <p>Select Movie Industry</p>
+      <select class="industry" name="movie-industry">
+        <option value="#">Select</option>
+        <option value="Bollywood">Bollywood</option>
+        <option value="Hollywood">Hollywood</option>
+      </select>
+      <p>
+        <button type="submit" id="submit">Submit</button>
+      </p>
+    </div>
+  </div>
+  <div id="maincontent" class="invisible wrapper">
+    <div id="industryName"></div>
+    <div id="game" class="gameclass"></div>
+    <div id="attempts" class="attemptclass">
+      <p>Attempts remaining</p>
+      <span id="attemptCount"></span>
+    </div>
+    <div id="qwerty" class="qwertyclass">
+      <label for="userEntry">Enter Your Guess</label>
+      <p><input type="text" id="userEntry" maxlength="1"></p>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="script/hangman.js"></script>
+</body>
+
+</html>
