@@ -5,6 +5,8 @@ var newFlag = 0;
 $("#submit").click(function(){
   $('#container').toggleClass('invisible');
   $('#maincontent').toggleClass('invisible');
+  $('#guessPart').toggleClass('invisible');
+
   // $('#attempts').toggleClass('invisible');
   var movieName = $('#moviename').val();
   var industry = $('.industry').val();
@@ -34,34 +36,71 @@ $('#userEntry').on("keypress",function(e){
     var ch = $(this).val();
     newFlag = 0;
     var blankEls = $('.blankLetters');
+
     // check if it matches any of the array data
     for (var i = 0; i < blankEls.length; i++) {
       console.log(ch);
       console.log(blankEls[i].textContent);
       // if matched then print out those in perfect order
-      if(blankEls[i].textContent === ch) {
-        console.log('loop content is '+blankEls[i].textContent);
-        blankEls[i].classList.toggle('visibletext');
-        newFlag = 1;
+      if(blankEls[i].textContent === ch){
+        if(ch.toUpperCase() === "A" || ch.toUpperCase() === "E" || ch.toUpperCase() === "I" ||
+          ch.toUpperCase() === "O" || ch.toUpperCase() === "U"){
+            $('#message').text("Vowels are already given!!");
+            newFlag = 1;
+          }else{
+            console.log('loop content is '+blankEls[i].textContent);
+            $('#message').text("");
+            blankEls[i].classList.add('visibletext');
+            newFlag = 1;
+          }
+      }else{
+        if(ch.toUpperCase() === "A" || ch.toUpperCase() === "E" || ch.toUpperCase() === "I" ||
+          ch.toUpperCase() === "O" || ch.toUpperCase() === "U"){
+            $('#message').text("Vowels are already given!!");
+            newFlag = 1;
+          }
+        else {
+          $('#message').text("");
+        }
       }
-      if(newFlag == 1){
-        flag = 1;
-      }
+    }
+
+    if(newFlag == 1){
+      flag = 1;
+      newFlag = 0;
+    }else{
+      flag = 0;
     }
 
     if(flag == 0){
       var oldAtCnt = $('#attemptCount').text();
-      if(oldAtCnt == 0){
+      newAtCnt = oldAtCnt - 1;
+      $('#attemptCount').text(newAtCnt);
+      if(newAtCnt == 0){
         // console.log('IN NESTED LOOP');
         for (var i = 0; i < blankEls.length; i++){
             blankEls[i].classList.add('visibletext');
         }
-        $('#userEntry').prop("disabled",true);
+        $('#message').text("Better luck next time!!!");
+        $('#userEntry').attr("disabled","disabled");
+      }else{
+        $('#attemptCount').text(newAtCnt);
       }
-      newAtCnt = oldAtCnt - 1;
-      $('#attemptCount').text(newAtCnt);
+    }else{
+      var blankCnt = $('.blankLetters');
+      var visibleCnt = $('.visibletext');
+      if(visibleCnt.length == blankCnt.length){
+        $('#message').addClass('celebration');
+        $('#message').text("Bingo!!! You got it");
+        $('#userEntry').attr("disabled","disabled");
+      }
+
     }
     $(this).val("");
 
   }
+});
+
+$('#playAgain').click(function(){
+    location.reload();
 });
