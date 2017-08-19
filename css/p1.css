@@ -1,6 +1,7 @@
 html, body {
   width: 100%;
   font-family: 'Roboto', sans-serif;
+  margin: 20px;
   /*background-image: url("../images/letters.jpg");
   background-size: cover;*/
   background: #232323;
@@ -73,6 +74,7 @@ h1 {
   padding: 10px;
   border: 1px solid #fff;
   margin: 5px;
+  float: left;
   background-color: #f9f789;
   border-radius: 0.25rem;
   width: 70px;
@@ -83,9 +85,12 @@ h1 {
 
 #game{
   width: 600px;
-  height: 400px;;
+  height: auto;;
   margin: 0 auto;
   text-align: center;
+  position: relative;
+  left: 9px;
+  float: left;
   -webkit-box-shadow: 7px 4px 11px -3px rgba(81,59,82,1);
   -moz-box-shadow: 7px 4px 11px -3px rgba(81,59,82,1);
   box-shadow: 7px 4px 11px -3px rgba(81,59,82,1);
@@ -132,40 +137,24 @@ h1 {
   border-radius: 0.25rem;
   padding: 5px 10px;
   text-align: center;
-  /*grid-row: 1;
-  grid-column: 2;*/
 }
 
-/*.wrapper.invisible{
-  display: none;
+#qwerty{
+  width: 26%;
+  float: left;
+  margin: 20px;
 }
-.wrapper{
-  display: grid;
-  grid-auto-rows: minmax(auto,80px);
-  grid-template-columns: 1fr 2fr 1fr;
-  grid-gap: 10px;
-}
-
-.gameclass{
-  grid-column: 2;
-  grid-row: 2/4;
-}
-
-.attemptclass{
-  grid-column: 3;
-  grid-row: 2;
-}*/
-
 .qwertyclass{
   margin: 10px;
+  width: 33%;
 }
 
 #message{
-  /*grid-column: 2;
-  grid-row: 4;*/
   text-align: center;
-  font-size: 36pt;
-  color: #ff0010;
+  font-size: 1.3em;
+  margin: 0 auto;
+  clear: both;
+  color: #A90010;
 }
 
 #message.celebration{
@@ -205,6 +194,7 @@ label{
   height: 40px;
   color: black;
   border: none;
+  float: left;
   border-radius: 0.25rem;
 }
 #playAgain:hover{
@@ -212,4 +202,39 @@ label{
   background-color: #232323;
   border: 1px solid #666666;
   border-radius: 0.25rem;
+}
+
+#wrongAttempts{
+  width: 510px;
+  height: 120px;
+}
+
+.wrongAttempts{
+  width: 510px;
+  height: 120px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  -webkit-box-shadow: 7px 4px 11px -3px rgba(81,59,82,1);
+  -moz-box-shadow: 7px 4px 11px -3px rgba(81,59,82,1);
+  box-shadow: 7px 4px 11px -3px rgba(81,59,82,1);
+  background-color: #3d3d3d;
+}
+.wrongLetters{
+  font-size: 32pt;
+  float: left;
+  color: #f9f789;
+  padding: 10px;
+  border: 1px solid #fff;
+  margin: 5px;
+  background-color: #e23838;
+  border-radius: 0.25rem;
+  width: 70px;
+  height: 80px;
+  font-family: 'Volkhov', serif;
+  text-transform: uppercase;
+}
+
+div{
+  margin: 10px;
 }

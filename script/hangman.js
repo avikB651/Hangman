@@ -42,7 +42,7 @@ $('#userEntry').on("keypress",function(e){
       console.log(ch);
       console.log(blankEls[i].textContent);
       // if matched then print out those in perfect order
-      if(blankEls[i].textContent === ch){
+      if(blankEls[i].textContent.toUpperCase() === ch.toUpperCase()){
         if(ch.toUpperCase() === "A" || ch.toUpperCase() === "E" || ch.toUpperCase() === "I" ||
           ch.toUpperCase() === "O" || ch.toUpperCase() === "U"){
             $('#message').text("Vowels are already given!!");
@@ -70,12 +70,20 @@ $('#userEntry').on("keypress",function(e){
       newFlag = 0;
     }else{
       flag = 0;
+      var wrongEls = $('.wrongLetters');
+      for (var i = 0; i < wrongEls.length; i++) {
+        if(ch.toUpperCase() === wrongEls[i].textContent.toUpperCase()){
+          flag = 1;
+        }
+      }
     }
 
     if(flag == 0){
+
       var oldAtCnt = $('#attemptCount').text();
       newAtCnt = oldAtCnt - 1;
       $('#attemptCount').text(newAtCnt);
+      $('#wrongAttempts').append("<div class='wrongLetters'>"+ ch.toUpperCase() +"</div>");
       if(newAtCnt == 0){
         // console.log('IN NESTED LOOP');
         for (var i = 0; i < blankEls.length; i++){
